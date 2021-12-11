@@ -1,0 +1,15 @@
+.modal-popup .popup-hdr {
+    position: relative;
+    margin-bottom: 0px;
+    display: inline !important;
+}
+.modal-popup .popup-hdr h4 {
+    font-size: 15px;
+    width: 75%;
+}
+.close-btn{
+    display:inline;
+    background: transparent;
+    float: right;
+    border: none;
+}

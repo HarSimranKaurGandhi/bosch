@@ -1,0 +1,50 @@
+<div class="product-wrapper">
+    <div class="product-wrapper-box">
+        <div>
+            <button type="button" mat-raised-button class="table-row-btn" (click)="create()">Create Tasks</button>
+        </div>
+        <div class="desktop-table">
+            <mat-card class="asset-table p-0">
+                <div class="table-responsive inner-table mb-3">
+                    <table class="mat-table default-tbl custom-mat-table" mat-table [dataSource]="dataSource" matSortDirection="desc" matSortActive="id" matSortDisableClear matSort (matSortChange)="onSortColumn($event)">
+                        <ng-container matColumnDef="task_id">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Task Id</th>
+                            <td mat-cell *matCellDef="let row"> {{row?.task_id}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="task_name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Task Name</th>
+                            <td mat-cell *matCellDef="let row">{{row?.task_name}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="project">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Project</th>
+                            <td mat-cell *matCellDef="let row">{{row?.project}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="comments">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Comments</th>
+                            <td mat-cell *matCellDef="let row">{{row?.comments}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="task_edit">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Task Edit </th>
+                            <td mat-cell *matCellDef="let row">
+                                <button type="button" mat-raised-button color="primary" class="table-row-btn" (click)="edit(row)">Edit</button>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="task_delete">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Task Delete </th>
+                            <td mat-cell *matCellDef="let row">
+                                <button type="button" mat-raised-button color="warn" class="table-row-btn" (click)="delete(row)">Delete</button>
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true;"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <div class="no-record table-recond" *ngIf="!dataSource?.data?.length">No records found</div>
+                </div>
+
+                <mat-paginator [length]="total_count" [pageIndex]="0" [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" (page)="onPageChange($event)"></mat-paginator>
+            </mat-card>
+        </div>
+
+
+    </div>
+</div>
